@@ -32,7 +32,7 @@ splunk_directory_skeleton = {'bin', 'default', 'metadata', 'README', 'appserver'
                              'static', 'local', 'lookups'}
 dirs_present = set(os.listdir(os.getcwd()))
 dirs_to_copy = splunk_directory_skeleton.intersection(dirs_present)
-print dirs_to_copy
+
 for directory in dirs_to_copy:
     shutil.copytree(directory, os.path.join(splunk_app_name, directory))
 
