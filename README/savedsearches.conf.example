@@ -1,0 +1,5 @@
+[example_slack_alert]
+action.api_key = xoxb-25215765711-1yF3WYuJUbOogQRe7zrBDafe
+action.slack_channel = #admins
+action.slack_bot_name = server_error_bot
+action.slack_preamble = The following server error occurred:
