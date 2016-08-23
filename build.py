@@ -23,6 +23,17 @@ def print_header(header):
     print('\n' + bcolors.OKBLUE + header + bcolors.ENDC + '\n')
 
 
+try:
+    shutil.rmtree(splunk_app_name)
+except OSError:
+    pass
+
+try:
+    os.remove('{0}.tgz'.format(splunk_app_name))
+except OSError:
+    pass
+
+
 print_header('Building {0} package...'.format(splunk_app_name))
 os.mkdir(splunk_app_name)
 
