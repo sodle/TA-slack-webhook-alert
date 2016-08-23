@@ -4,7 +4,7 @@
 This app provides an Alert Action that posts matching events to Slack using the Slack Bot User API.
 
 ## Requirements
-Splunk 6.0 or later.
+Splunk 6.3 or later.
 
 ## Building the Splunk package
 From the project directory, execute `build.py`. This generates a .tgz package ready to be installed into Splunk or uploaded to Splunkbase. Under the hood, it does the following:
