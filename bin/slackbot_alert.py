@@ -18,6 +18,6 @@ if __name__ == '__main__':
 
         slack_message = '```{0}```'.format(splunk_event)
         if slack_preamble:
-            slack_message = '{0}\n'.format(slack_preamble)
+            slack_message = '{0}\n{1}'.format(slack_preamble, slack_message)
 
         slack.chat.post_message(slack_channel, slack_message, username=slack_bot_name)
