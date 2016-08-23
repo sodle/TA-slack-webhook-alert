@@ -25,6 +25,8 @@ This app uses your system Python install instead of Splunk's built in one, allow
     - `slack_bot_name`: Display name for the bot.
     - `slack_preamble`: Text to post before the events (accepts Slack formatting, @ tags, and \n)
 
+Note: If your saved search returns multiple events, this alert will only publish the first to Slack. To get around this, use the "Once Per Event" mode when configuring in SplunkWeb or `alert.digest_mode=0` in `savedsearches.conf`. 
+
 ## Acknowledgements
 The following libraries are bundled with this script.
 
