@@ -1,4 +1,4 @@
-# [Download from Splunkbase](https://splunkbase.splunk.com/app/3277) (Coming Soon)
+# [Download from Splunkbase](https://splunkbase.splunk.com/app/3277)
 
 # Splunk Custom Alert Action to send events to Slack
 This app provides an Alert Action that posts matching events to Slack using the Slack Bot User API.
