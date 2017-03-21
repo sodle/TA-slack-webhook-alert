@@ -1,0 +1,22 @@
+<form class="form-vertical form-complex">
+    <div class="control-group">
+        <label class="control-label" for="slack_webhook">Slack Webhook URL</label>
+        <div class="controls">
+            <input name="action.slack_webhook_alert.param.slack_webhook" id="slack_webhook" type="text" />
+            <span class="help-block"><a href="https://api.slack.com/incoming-webhooks" target="_blank">Create an app</a> in your Slack environment to get this.</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="slack_message">Slack Message</label>
+        <div class="controls">
+            <textarea name="action.slack_webhook_alert.param.slack_message" id="slack_message"></textarea>
+            <span class="help-block">Slack formatting, <a href="https://docs.splunk.com/Documentation/Splunk/6.5.2/Alert/EmailNotificationTokens" target="_blank">Splunk tokens</a>, and \n accepted.</span>
+        </div>
+    </div>
+    <div>
+        <strong>Note</strong>: The $result.fieldname$ tokens only return the first result matched by the search. To get around this, use the "Trigger Once Per Event" mode to send a separate message for each search result.
+    </div>
+    <div>
+        <strong>Tip</strong>: For searches that return events, you can use $result._raw$ to get the entire first result.
+    </div>
+</form>

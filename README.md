@@ -19,15 +19,13 @@ From the project directory, execute `build.py`. This generates a .tgz package re
 This app uses your system Python install instead of Splunk's built in one, allowing PIP packages to be used. Setup is as follows:
 
 - Install the Splunk app through the GUI or by extracting it to your apps directory and restarting Splunk.
-- Configure an alert through the normal means (GUI or `savedsearches.conf`) and add a Slackbot action with the following parameters:
-    - `api_key`: The Slack API key you obtained from your Slack organization.
-    - `slack_channel`: The Slack channel or user (`#channel` or `@user`) to post to.
-    - `slack_bot_name`: Display name for the bot.
-    - `slack_preamble`: Text to post before the events (accepts Slack formatting, @ tags, and \n)
+- Configure an alert through the normal means (GUI or `savedsearches.conf`) and add a `slack_webhook_alert` action with the following parameters:
+    - `slack_webhook`: Slack Incoming Webhook URL
+    - `slack_message`: Text of the Slack message to send. Slack formatting and `\n` for a newline are accepted, as well as [Splunk token substitutions](https://docs.splunk.com/Documentation/Splunk/6.5.2/Alert/EmailNotificationTokens).
 
 Note: If your saved search returns multiple events, this alert will only publish the first to Slack. To get around this, use the "Once Per Event" mode when configuring in SplunkWeb or `alert.digest_mode=0` in `savedsearches.conf`. 
 
 ## Acknowledgements
 The following libraries are bundled with this script.
 
-- [PySlack](https://pypi.python.org/pypi/pyslack/)
+- [Requests](https://pypi.python.org/pypi/requests/)

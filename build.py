@@ -5,7 +5,7 @@ import pip
 import tarfile
 
 # Change this to the base folder name of your Splunk app!
-splunk_app_name = 'slack-splunk-alert'
+splunk_app_name = 'slack-webhook-alert'
 
 
 class bcolors:

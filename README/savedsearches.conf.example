@@ -11,7 +11,5 @@ relation = greater than
 
 # Enable and configure the Slackbot alert
 action.slackbot_alert = 1
-action.slackbot_alert.api_key = xoxb-25215765711-1yF3WYuJUbOogQRe7zrBDafe
-action.slackbot_alert.slack_channel = #admins
-action.slackbot_alert.slack_bot_name = server_error_bot
-action.slackbot_alert.slack_preamble = The following server error occurred:
+action.slackbot_alert.slack_webhook = https://hooks.slack.com/services/xxx/xxx/xxx
+action.slackbot_alert.slack_message = $job.resultCount$ errors reported. Details: $resultsLink$

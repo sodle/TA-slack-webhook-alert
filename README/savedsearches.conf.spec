@@ -1,18 +1,10 @@
 [slack_alert_name]
-* (Unique) name for your Slackbot alert.
+* (Unique) name for your Slack Webhook alert.
 
-action.api_key = <string>
-* API Key for the Slack bot user API.
+action.slack_webhook = <string>
+* Slack Incoming Webhook URL
 * (required)
 
-action.slack_channel = <string>
-* Slack channel that your alert will publish to. "#channelname" for a channel or "@username" to send to an indiviual user.
+action.slack_message = <string>
+* Text of the Slack message to send. Slack formatting and "\n" for a newline are accepted, as well as Splunk token substitutions as described in https://docs.splunk.com/Documentation/Splunk/6.5.2/Alert/EmailNotificationTokens.
 * (required)
-
-action.slack_bot_name = <string>
-* Display name for messages from your bot. Leave blank for "bot".
-* (optional)
-
-action.slack_preamble = <string>
-* Text to insert before the Splunk event in messages. Slack formatting and "\n" for a newline are accepted.
-* (optional)

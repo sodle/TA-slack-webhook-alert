@@ -1,1 +1,1 @@
-pyslack
+requests

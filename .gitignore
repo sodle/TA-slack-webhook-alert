@@ -1,3 +1,5 @@
 slack-splunk-alert/
 slack-splunk-alert.tar.gz
 .idea/
+slack-webhook-alert/
+slack-webhook-alert.tar.gz
