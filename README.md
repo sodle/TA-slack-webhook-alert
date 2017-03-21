@@ -16,8 +16,6 @@ From the project directory, execute `build.py`. This generates a .tgz package re
 * Deletes the temp directory.
 
 ## Setting up
-This app uses your system Python install instead of Splunk's built in one, allowing PIP packages to be used. Setup is as follows:
-
 - Install the Splunk app through the GUI or by extracting it to your apps directory and restarting Splunk.
 - Configure an alert through the normal means (GUI or `savedsearches.conf`) and add a `slack_webhook_alert` action with the following parameters:
     - `slack_webhook`: Slack Incoming Webhook URL
