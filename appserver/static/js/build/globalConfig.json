@@ -1,0 +1,94 @@
+{
+    "pages": {
+        "configuration": {
+            "title": "Manage Webhooks", 
+            "tabs": [
+                {
+                    "title": "Account", 
+                    "table": {
+                        "header": [
+                            {
+                                "field": "name", 
+                                "label": "Label"
+                            }, 
+                            {
+                                "field": "username", 
+                                "label": "Webhook Name"
+                            }
+                        ], 
+                        "actions": [
+                            "edit", 
+                            "delete", 
+                            "clone"
+                        ]
+                    }, 
+                    "name": "account", 
+                    "entity": [
+                        {
+                            "field": "name", 
+                            "label": "Label", 
+                            "type": "text", 
+                            "validators": [
+                                {
+                                    "maxLength": 50, 
+                                    "errorMsg": "Length of label should be between 1 and 50", 
+                                    "type": "string", 
+                                    "minLength": 1
+                                }, 
+                                {
+                                    "errorMsg": "Label must start with a letter and followed by alphabetic letters, digits or underscores.", 
+                                    "type": "regex", 
+                                    "pattern": "^[a-zA-Z]\\w*$"
+                                }
+                            ], 
+                            "required": true, 
+                            "help": "Unique label for this configuration (required by Splunk)"
+                        }, 
+                        {
+                            "field": "username", 
+                            "label": "Webhook Name", 
+                            "type": "text", 
+                            "validators": [
+                                {
+                                    "maxLength": 200, 
+                                    "errorMsg": "Length of webhook name should be between 1 and 200", 
+                                    "type": "string", 
+                                    "minLength": 1
+                                }
+                            ], 
+                            "required": true, 
+                            "help": "Unique name for this webhook (could be the same as above) - referenced in alert configuration", 
+                            "options": {
+                                "placeholder": "Enter the webhook here"
+                            }
+                        }, 
+                        {
+                            "field": "password", 
+                            "label": "Webhook URL", 
+                            "type": "text", 
+                            "validators": [
+                                {
+                                    "maxLength": 8192, 
+                                    "errorMsg": "Length of URL should be between 1 and 8192", 
+                                    "type": "string", 
+                                    "minLength": 1
+                                }
+                            ], 
+                            "required": true, 
+                            "help": "Enter the URL for this webhook", 
+                            "encrypted": true
+                        }
+                    ]
+                }
+            ], 
+            "description": "Manage Slack webhooks"
+        }
+    }, 
+    "meta": {
+        "version": "3.0.0", 
+        "apiVersion": "3.0.0", 
+        "displayName": "Slack Webhook Alert", 
+        "name": "TA-slack-webhook-alert", 
+        "restRoot": "TA_slack_webhook_alert"
+    }
+}

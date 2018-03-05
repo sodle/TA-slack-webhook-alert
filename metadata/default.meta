@@ -1,7 +1,8 @@
-[]
-export=system
-access = read : [ * ], write : [ admin, power ]
 
-[alert_actions/slackbot_alert]
-access = read : [ * ], write : [ * ]
+[]
+access = read : [ * ], write : [ admin ]
 export = system
+
+[views]
+access = read : [ * ], write : [ admin ]
+export = none

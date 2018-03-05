@@ -1,22 +1,38 @@
-<form class="form-vertical form-complex">
-    <div class="control-group">
-        <label class="control-label" for="slack_webhook">Slack Webhook URL</label>
-        <div class="controls">
-            <input name="action.slack_webhook_alert.param.slack_webhook" id="slack_webhook" type="text" />
-            <span class="help-block"><a href="https://api.slack.com/incoming-webhooks" target="_blank">Create an app</a> in your Slack environment to get this.</span>
-        </div>
+<form class="form-horizontal form-complex">
+<div class="control-group">
+	<label class="control-label" for="slack_webhook_alert_slack_webhook_name">Slack Webhook Name <span class="required">*</span> </label>
+    <div class="controls">
+	<input type="text" name="action.slack_webhook_alert.param.slack_webhook_name" id="slack_webhook_alert_slack_webhook_name"/>
+                <span class="help-block"> 
+                    "Webhook Name" field as declared on app config page
+                </span>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_message">Slack Message</label>
-        <div class="controls">
-            <textarea name="action.slack_webhook_alert.param.slack_message" id="slack_message"></textarea>
-            <span class="help-block">Slack formatting, <a href="https://docs.splunk.com/Documentation/Splunk/6.5.2/Alert/EmailNotificationTokens" target="_blank">Splunk tokens</a>, and \n accepted.</span>
-        </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="slack_webhook_alert_channel_name">Destination channel  </label>
+    <div class="controls">
+	<input type="text" name="action.slack_webhook_alert.param.channel_name" id="slack_webhook_alert_channel_name"/>
     </div>
-    <div>
-        <strong>Note</strong>: The $result.fieldname$ tokens only return the first result matched by the search. To get around this, use the "Trigger Once Per Event" mode to send a separate message for each search result.
+</div>
+<div class="control-group">
+	<label class="control-label" for="slack_webhook_alert_username">Bot username  </label>
+    <div class="controls">
+	<input type="text" name="action.slack_webhook_alert.param.username" id="slack_webhook_alert_username"/>
     </div>
-    <div>
-        <strong>Tip</strong>: For searches that return events, you can use $result._raw$ to get the entire first result.
+</div>
+<div class="control-group">
+	<label class="control-label" for="slack_webhook_alert_emoji_avatar">Emoji avatar  </label>
+    <div class="controls">
+	<input type="text" name="action.slack_webhook_alert.param.emoji_avatar" id="slack_webhook_alert_emoji_avatar"/>
     </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="slack_webhook_alert_message">Message <span class="required">*</span> </label>
+    <div class="controls">
+	<textarea name="action.slack_webhook_alert.param.message" id="slack_webhook_alert_message"/>
+                <span class="help-block"> 
+                    Accepts Slack formatting, Splunk tokens, newlines.
+                </span>
+    </div>
+</div>
 </form>

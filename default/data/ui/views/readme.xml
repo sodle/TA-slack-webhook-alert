@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<dashboard>
+    <label>READ ME</label>
+    <row>
+        <html>
+            <p>Use the "Manage Webhooks" page to add a Slack Webhook URL to the app. You can then run a search from the GUI and "Save as..." a Slack alert.</p>
+        </html>
+    </row>
+</dashboard>
