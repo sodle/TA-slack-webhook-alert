@@ -72,6 +72,11 @@
                                     "errorMsg": "Length of URL should be between 1 and 8192", 
                                     "type": "string", 
                                     "minLength": 1
+                                },
+                                {
+                                    "errorMsg": "Only https:// webhooks are supported",
+                                    "type": "regex",
+                                    "pattern": "^https://.*$"
                                 }
                             ], 
                             "required": true, 
