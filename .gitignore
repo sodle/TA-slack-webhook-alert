@@ -1,0 +1,4 @@
+*.pyc
+*.pyo
+TA-slack-webhook-alert
+TA-slack-webhook-alert.tgz
