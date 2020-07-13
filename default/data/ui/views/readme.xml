@@ -4,6 +4,32 @@
     <row>
         <html>
             <p>Use the "Manage Webhooks" page to add a Slack Webhook URL to the app. You can then run a search from the GUI and "Save as..." a Slack alert.</p>
+            <p>See <a href="https://api.slack.com/messaging/webhooks" target="_blank">Slack documentation</a> to set up a Webhook and get your URL.</p>
+        </html>
+    </row>
+    <row>
+        <html>
+            <h1>Basic Configuration</h1>
+            <p>If no proxy server is needed, simply set your Webhook URL to the value given by Slack:</p>
+            <p>
+                <pre>
+https://hooks.slack.com/....
+                </pre> 
+            </p>
+        </html>
+    </row>
+    <row>
+        <html>
+            <h1>Advanced Configuration</h1>
+            <p>To use a HTTPS or SOCKS proxy server, set your Webhook URL to a JSON object with the following parameters:</p>
+            <p>
+                <pre>
+{
+    "slackWebhookUrl": "https://hooks.slack.com/....",
+    "httpsProxyUrl": "https://proxy.mycompany.com | https://username@proxy.mycompany.com | https://username:password@proxy.mycompany.com | socks5://proxy.mycompany.com"
+}
+                </pre> 
+            </p>
         </html>
     </row>
 </dashboard>
