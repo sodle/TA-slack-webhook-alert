@@ -91,7 +91,6 @@ def process_event(helper, *args, **kwargs):
     else:
         # New mode: secret is a json string with webhook url and optional proxy url
         import json
-        helper.log_info(slack_webhook)
         slack_webhook_obj = json.loads(slack_webhook)
         slack_webhook_url = slack_webhook_obj.get('slackWebhookUrl')
         proxies['https'] = slack_webhook_obj.get('httpsProxyUrl')
@@ -100,7 +99,6 @@ def process_event(helper, *args, **kwargs):
         helper.log_error('Only HTTPS webhooks are supported!')
         return -1
 
-    helper.log_info(slack_webhook_url)
     
     slack_response = requests.post(slack_webhook_url, json=slack_message, proxies=proxies)
     
