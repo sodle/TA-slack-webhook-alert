@@ -1,5 +1,10 @@
-
 # encoding = utf-8
+import sys
+from os import path
+sys.path.insert(0, path.join(path.dirname(__file__), "..", "lib"))
+
+import requests
+
 
 def process_event(helper, *args, **kwargs):
     """
@@ -63,9 +68,6 @@ def process_event(helper, *args, **kwargs):
         helper.log_error('Slack webhook {} not found!'.format(slack_webhook_name))
         return -1
     slack_webhook = slack_credential.get('password')
-    if not slack_webhook.startswith('https://'):
-        helper.log_error('Only HTTPS webhooks are supported!')
-        return -1
         
     slack_message = {
         'text': message,
@@ -80,8 +82,27 @@ def process_event(helper, *args, **kwargs):
 
     if emoji_avatar is not None:
         slack_message['icon_emoji'] = emoji_avatar
-        
-    slack_response = helper.send_http_request(slack_webhook, 'POST', payload=slack_message)
+
+    proxies = {}
+
+    if (slack_webhook.startswith('https://')):
+        # Legacy mode: secret is a plain URL
+        slack_webhook_url = slack_webhook
+    else:
+        # New mode: secret is a json string with webhook url and optional proxy url
+        import json
+        helper.log_info(slack_webhook)
+        slack_webhook_obj = json.loads(slack_webhook)
+        slack_webhook_url = slack_webhook_obj.get('slackWebhookUrl')
+        proxies['https'] = slack_webhook_obj.get('httpsProxyUrl')
+
+    if not slack_webhook_url.startswith('https://'):
+        helper.log_error('Only HTTPS webhooks are supported!')
+        return -1
+
+    helper.log_info(slack_webhook_url)
+    
+    slack_response = requests.post(slack_webhook_url, json=slack_message, proxies=proxies)
     
     if slack_response.status_code >= 400:
         helper.log_error('Slack request failed: {}'.format(slack_response.text))

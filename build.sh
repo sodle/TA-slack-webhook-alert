@@ -10,6 +10,10 @@ echo "Creating app directory..."
 mkdir $PACKAGE_NAME
 cp -r bin default README static README.txt appserver app.manifest metadata $PACKAGE_NAME
 
+echo "Installing Python libraries..."
+mkdir "$PACKAGE_NAME/lib"
+pip3 install --target="$PACKAGE_NAME/lib" -r requirements.txt
+
 echo "Cleaning up Python binaries..."
 find $PACKAGE_NAME -type f -name "*.pyc" -delete
 find $PACKAGE_NAME -type f -name "*.pyo" -delete

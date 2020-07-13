@@ -5,7 +5,7 @@
     "id": {
       "group": null,
       "name": "TA-slack-webhook-alert",
-      "version": "3.2.0"
+      "version": "3.3.0"
     },
     "author": [
       {
