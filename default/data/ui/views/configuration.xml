@@ -1,4 +1,25 @@
 <?xml version="1.0"?>
-<view template="TA-slack-webhook-alert:templates/base.html" type="html" isDashboard="False">
-    <label>Manage Webhooks</label>
-</view>
+<dashboard script="configuration_page.js">
+    <label>Configuration</label>
+
+    <row>
+        <panel>
+            <html>
+                <h1>Slack Webhooks
+                    <button id="add-webhook-button">+ Add a Webhook</button>
+                </h1>
+                <div id="webhooks-table"/>
+            </html>
+        </panel>
+    </row>
+    <row>
+        <panel>
+            <html>
+                <h1>Proxy Configurations
+                    <button id="add-proxy-button">+ Configure a Proxy Server</button>
+                </h1>
+                <div id="proxies-table"/>
+            </html>
+        </panel>
+    </row>
+</dashboard>

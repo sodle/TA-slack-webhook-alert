@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="SplunkJS" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file:///opt/splunk/share/splunk/search_mrsparkle/exposed/js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file:///opt/splunk/share/splunk/search_mrsparkle/exposed/js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

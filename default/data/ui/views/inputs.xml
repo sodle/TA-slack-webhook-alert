@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
-<view template="TA-slack-webhook-alert:templates/base.html" type="html" isDashboard="False">
+<dashboard>
     <label>Inputs</label>
-</view>
+</dashboard>

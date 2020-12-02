@@ -1,5 +1,3 @@
 <nav search_view="search" color="#65A637">
-<view name="readme" default="true"/>
-<view name="configuration"/>
-<view name="search" label="Search"/>
+    <view name="configuration" default="true"/>
 </nav>
