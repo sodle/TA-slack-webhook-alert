@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<dashboard script="create_proxy.js">
+    <label>Configure a Proxy Server</label>
+
+    <row>
+        <panel>
+            <html>
+                <form>
+
+                </form>
+            </html>
+        </panel>
+    </row>
+</dashboard>
