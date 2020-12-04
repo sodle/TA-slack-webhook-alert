@@ -1,0 +1,20 @@
+.spook-form-input {
+    min-width: 100%;
+}
+
+.spook-form-help {
+    margin-bottom: 2em;
+}
+
+.spook-form-help > p {
+    margin-bottom: 0;
+}
+
+.spook-form-help-title {
+    font-weight: bold;
+}
+
+.spook-form-help-subtitle {
+    font-weight: lighter;
+    font-style: italic;
+}

@@ -76,6 +76,10 @@ require([
     webhooksTable.addCellRenderer(webhookActionsCellRenderer);
     webhooksTable.render();
 
+    $("#add-proxy-button").click(() => {
+        window.location = "create_proxy";
+    });
+
     new SearchManager({
         id: "proxies",
         search:
