@@ -18,3 +18,11 @@
     font-weight: lighter;
     font-style: italic;
 }
+
+.spook-loading-content {
+    display: none;
+}
+
+.spook-loading-progress.spook-loading-done {
+    display: none;
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<dashboard script="edit_proxy.js" stylesheet="common_forms.css">
+    <label>Edit Proxy Server</label>
+    <row>
+        <panel>
+            <html>
+                <div class="spook-loading-progress">
+                    Loading...
+                </div>
+                <form action="#" id="config-form" class="spook-loading-content">
+                    <label for="config-name">
+                        <h1>Configuration Name</h1>
+                    </label>
+                    <div>
+                        <input class="spook-form-input" type="text" id="config-name" name="name" disabled="disabled"/>
+                    </div>
+                    <label for="proxy-url">
+                        <h1>Proxy URL</h1>
+                    </label>
+                    <div>
+                        <input class="spook-form-input" type="text" id="proxy-url" name="url" required="required"/>
+                    </div>
+                    <div class="spook-form-help">
+                        <p class="spook-form-help-title">HTTP, HTTPS, or SOCKS proxy URL. Examples:</p>
+                        <p class="spook-form-help-subtitle">http://proxy.mycompany.com</p>
+                        <p class="spook-form-help-subtitle">https://username:password@proxy.mycompany.com</p>
+                        <p class="spook-form-help-subtitle">https://username:password@proxy.mycompany.com:8088</p>
+                        <p class="spook-form-help-subtitle">socks5://proxy.mycompany.com</p>
+                    </div>
+                    <input class="spook-form-input" type="submit" value="Save"/>
+                </form>
+            </html>
+        </panel>
+    </row>
+</dashboard>

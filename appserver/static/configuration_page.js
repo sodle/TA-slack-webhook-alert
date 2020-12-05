@@ -43,6 +43,9 @@ require([
         render: ($td, cellData) => {
             let editLink = document.createElement("a");
             editLink.textContent = "Edit";
+            editLink.onclick = () => {
+                window.location = `edit_proxy?config_id=${cellData.value}`;
+            };
             $td.append(editLink);
 
             $td.append(" | ");
