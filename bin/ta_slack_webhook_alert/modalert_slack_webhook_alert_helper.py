@@ -1,7 +1,6 @@
 # encoding = utf-8
 import sys
 from os import path, environ
-from pathlib import Path
 
 sys.path.insert(0, path.join(path.dirname(__file__), "..", "lib"))
 
@@ -115,7 +114,7 @@ def process_event(helper, *args, **kwargs):
             '/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem',  # CentOS/RHEL 7
             '/etc/ssl/cert.pem',  # Alpine Linux
         ]:
-            if Path(common_cert_path).is_file():
+            if path.isfile(common_cert_path):
                 cert_chain_path = common_cert_path
 
     session = requests.session()
