@@ -32,4 +32,28 @@ https://hooks.slack.com/....
             </p>
         </html>
     </row>
+    <row>
+        <html>
+            <h1>Custom Certificate Authority Bundle</h1>
+            <p>By default, this app checks the most common Linux locations for a chain of trusted CA certs:</p>
+            <ol>
+                <li>/etc/ssl/certs/ca-certificates.crt</li>
+                <li>/etc/pki/tls/certs/ca-bundle.crt</li>
+                <li>/etc/ssl/ca-bundle.pem</li>
+                <li>/etc/pki/tls/cacert.pem</li>
+                <li>/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem</li>
+                <li>/etc/ssl/cert.pem</li>
+            </ol>
+            <p>The first of these files that exists is checked when validating the cert for https://hooks.slack.com.</p>
+            <p>To override this choice, use a JSON-style webhook (see above) and set the "caBundlePath" as follows:</p>
+            <p>
+                <pre>
+{
+    "slackWebhookUrl": "https://hooks.slack.com/....",
+    "caBundlePath": "/var/my-custom-certs/ca-bundle.crt"
+}
+                </pre>
+            </p>
+        </html>
+    </row>
 </dashboard>

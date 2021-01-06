@@ -1,6 +1,8 @@
 # encoding = utf-8
 import sys
-from os import path
+from os import path, environ
+from pathlib import Path
+
 sys.path.insert(0, path.join(path.dirname(__file__), "..", "lib"))
 
 import requests
@@ -56,27 +58,27 @@ def process_event(helper, *args, **kwargs):
     """
 
     helper.log_info("Alert action slack_webhook_alert started.")
-    
+
     slack_webhook_name = helper.get_param('slack_webhook_name')
     channel_name = helper.get_param('channel_name')
     username = helper.get_param('username')
     emoji_avatar = helper.get_param('emoji_avatar')
     message = helper.get_param('message')
-    
+
     slack_credential = helper.get_user_credential(slack_webhook_name)
     if slack_credential is None or slack_credential.get('password') is None:
         helper.log_error('Slack webhook {} not found!'.format(slack_webhook_name))
         return -1
     slack_webhook = slack_credential.get('password')
-        
+
     slack_message = {
         'text': message,
         'link_names': 1
     }
-    
+
     if channel_name is not None:
         slack_message['channel'] = channel_name
-    
+
     if username is not None:
         slack_message['username'] = username
 
@@ -85,23 +87,43 @@ def process_event(helper, *args, **kwargs):
 
     proxies = {}
 
-    if (slack_webhook.startswith('https://')):
+    cert_chain_path = None
+
+    if slack_webhook.startswith('https://'):
         # Legacy mode: secret is a plain URL
         slack_webhook_url = slack_webhook
     else:
-        # New mode: secret is a json string with webhook url and optional proxy url
+        # New mode: secret is a json string with webhook url and optional proxy url and cert chain path
         import json
         slack_webhook_obj = json.loads(slack_webhook)
         slack_webhook_url = slack_webhook_obj.get('slackWebhookUrl')
         proxies['https'] = slack_webhook_obj.get('httpsProxyUrl')
+        cert_chain_path = slack_webhook_obj.get('caBundlePath')
 
     if not slack_webhook_url.startswith('https://'):
         helper.log_error('Only HTTPS webhooks are supported!')
         return -1
 
-    
-    slack_response = requests.post(slack_webhook_url, json=slack_message, proxies=proxies)
-    
+    if cert_chain_path is None and sys.platform == "linux":
+        # If a cert chain isn't specified, search common Linux OS locations for the cert chain
+        # List of paths copied from: https://github.com/matusf/ca-bundle/blob/master/ca_bundle.py
+        for common_cert_path in [
+            '/etc/ssl/certs/ca-certificates.crt',  # Debian/Ubuntu/Gentoo etc.
+            '/etc/pki/tls/certs/ca-bundle.crt',  # Fedora/RHEL 6
+            '/etc/ssl/ca-bundle.pem',  # OpenSUSE
+            '/etc/pki/tls/cacert.pem',  # OpenELEC
+            '/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem',  # CentOS/RHEL 7
+            '/etc/ssl/cert.pem',  # Alpine Linux
+        ]:
+            if Path(common_cert_path).is_file():
+                cert_chain_path = common_cert_path
+
+    session = requests.session()
+    if cert_chain_path is not None:
+        session.verify = cert_chain_path
+
+    slack_response = session.post(slack_webhook_url, json=slack_message, proxies=proxies)
+
     if slack_response.status_code >= 400:
         helper.log_error('Slack request failed: {}'.format(slack_response.text))
         return slack_response.status_code

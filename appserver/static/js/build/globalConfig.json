@@ -76,7 +76,7 @@
                 }
               ],
               "required": true,
-              "help": "Basic mode: the HTTPS URL for your Slack webhook. Advanced mode: a JSON document containing the \"slackWebhookUrl\" and \"httpsProxyUrl\".",
+              "help": "Basic mode: the HTTPS URL for your Slack webhook. Advanced mode: a JSON document containing the \"slackWebhookUrl\" and optionally \"httpsProxyUrl\" and \"caBundlePath\".",
               "encrypted": true
             }
           ]
