@@ -103,7 +103,7 @@ def process_event(helper, *args, **kwargs):
         helper.log_error('Only HTTPS webhooks are supported!')
         return -1
 
-    if cert_chain_path is None and sys.platform == "linux":
+    if cert_chain_path is None and sys.platform.startswith("linux"):
         # If a cert chain isn't specified, search common Linux OS locations for the cert chain
         # List of paths copied from: https://github.com/matusf/ca-bundle/blob/master/ca_bundle.py
         for common_cert_path in [
