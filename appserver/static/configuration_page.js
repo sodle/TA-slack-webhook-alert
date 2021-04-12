@@ -10,19 +10,9 @@ require([
     const tokenKey = $.cookie("token_key");
 
     function confirmDeleteSecret(secretId) {
-        let [type, name] = secretId.split(":");
+        const name = secretId.match(/^:(?<name>.+):/).groups.name
 
-        switch (type) {
-        case "slackbot": {
-            type = "Slackbot Webhook";
-            break;
-        }
-        case "slackbot_proxy": {
-            type = "Slackbot Proxy Configuration";
-            break;
-        }
-        }
-        if (confirm(`Delete ${type} "${name}"?`)) {
+        if (confirm(`Delete configuration "${name}"?`)) {
             fetch(`/${localeName}/splunkd/__raw/servicesNS/nobody/TA-slack-webhook-alert/storage/passwords/${secretId}`, {
                 method: "DELETE",
                 headers: {
@@ -44,7 +34,7 @@ require([
             let editLink = document.createElement("a");
             editLink.textContent = "Edit";
             editLink.onclick = () => {
-                window.location = `edit_proxy?config_id=${cellData.value}`;
+                window.location = `edit_webhook?id=${cellData.value}`;
             };
             $td.append(editLink);
 
@@ -57,11 +47,14 @@ require([
         }
     });
 
+    $("#add-webhook-button").click(() => {
+        window.location = "create_webhook";
+    });
+
     new SearchManager({
         id: "webhooks",
         search:
             "| rest \"servicesNS/nobody/TA-slack-webhook-alert/storage/passwords\"" +
-            "| search realm=slackbot" +
             "| rename username as \"Webhook Name\", title as Actions" +
             "| fields \"Webhook Name\", Actions",
         preview: true,
@@ -78,30 +71,4 @@ require([
     let webhookActionsCellRenderer = new tableActionsCellRenderer();
     webhooksTable.addCellRenderer(webhookActionsCellRenderer);
     webhooksTable.render();
-
-    $("#add-proxy-button").click(() => {
-        window.location = "create_proxy";
-    });
-
-    new SearchManager({
-        id: "proxies",
-        search:
-            "| rest \"servicesNS/nobody/TA-slack-webhook-alert/storage/passwords\"" +
-            "| search realm=slackbot_proxy" +
-            "| rename username as \"Configuration Name\", title as Actions" +
-            "| fields \"Configuration Name\", Actions",
-        preview: true,
-        cache: false
-    });
-
-    let proxiesTable = new TableView({
-        id: "proxies-table",
-        managerid: "proxies",
-        drilldown: "none",
-        el: $("#proxies-table")
-    });
-
-    let proxyActionsCellRenderer = new tableActionsCellRenderer();
-    proxiesTable.addCellRenderer(proxyActionsCellRenderer);
-    proxiesTable.render();
 });

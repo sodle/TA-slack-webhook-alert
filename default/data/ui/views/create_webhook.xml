@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<dashboard script="create_webhook.js" stylesheet="common_forms.css">
+    <label>Configure a Webhook</label>
+    <row>
+        <panel>
+            <html>
+                <form action="#" id="config-form">
+                    <label for="config-name">
+                        <h1>Configuration Name</h1>
+                    </label>
+                    <div>
+                        <input class="spook-form-input" type="text" id="config-name" name="name" required="required"/>
+                    </div>
+                    <div class="spook-form-help">
+                        <p class="spook-form-help-subtitle">Must be unique</p>
+                    </div>
+                    <label for="webhook-url">
+                        <h1>Webhook</h1>
+                    </label>
+                    <div>
+                        <input class="spook-form-input" type="text" id="webhook-url" name="webhook-url"
+                               required="required"/>
+                    </div>
+                    <div class="spook-form-help">
+                        <p class="spook-form-help-title">Slack HTTPS Webhook URL</p>
+                        <p class="spook-form-help-subtitle">https://hooks.slack.com/services/XXXXXX</p>
+                        <p class="spook-form-help-subtitle">Only HTTPS Webhooks are supported.</p>
+                    </div>
+                    <label for="proxy-url">
+                        <h1>Proxy Server (optional)</h1>
+                    </label>
+                    <div>
+                        <input class="spook-form-input" type="text" id="proxy-url" name="proxy-url"/>
+                    </div>
+                    <div class="spook-form-help">
+                        <p class="spook-form-help-title">HTTPS or SOCKS proxy URL, if needed to reach
+                            https://hooks.slack.com from this Splunk search head
+                        </p>
+                        <p class="spook-form-help-subtitle">https://proxy.example.com</p>
+                        <p class="spook-form-help-subtitle">https://username@proxy.example.com</p>
+                        <p class="spook-form-help-subtitle">https://username:password@proxy.example.com</p>
+                        <p class="spook-form-help-subtitle">socks5://proxy.example.com</p>
+                    </div>
+                    <label for="ca-bundle-path">
+                        <h1>Custom CA Bundle (optional)</h1>
+                    </label>
+                    <div>
+                        <input class="spook-form-input" type="text" id="ca-bundle-path" name="ca-bundle-path"/>
+                    </div>
+                    <div class="spook-form-help">
+                        <p class="spook-form-help-title">Path on this search head's filesystem to a custom certificate
+                            authority bundle
+                        </p>
+                        <p class="spook-form-help-subtitle">If left unset, the default for the OS is used</p>
+                    </div>
+                    <input class="spook-form-input" type="submit" value="Save"/>
+                </form>
+            </html>
+        </panel>
+    </row>
+</dashboard>

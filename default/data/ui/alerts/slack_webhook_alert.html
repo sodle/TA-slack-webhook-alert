@@ -1,38 +1,42 @@
 <form class="form-horizontal form-complex">
-<div class="control-group">
-	<label class="control-label" for="slack_webhook_alert_slack_webhook_name">Slack Webhook Name <span class="required">*</span> </label>
-    <div class="controls">
-	<input type="text" name="action.slack_webhook_alert.param.slack_webhook_name" id="slack_webhook_alert_slack_webhook_name"/>
-                <span class="help-block"> 
+    <div class="control-group">
+        <label class="control-label" for="slack_webhook_alert_slack_webhook_name">Slack Webhook Name <span
+                class="required">*</span> </label>
+        <div class="controls">
+            <input type="text" name="action.slack_webhook_alert.param.slack_webhook_name"
+                   id="slack_webhook_alert_slack_webhook_name"/>
+            <span class="help-block">
                     "Webhook Name" field as declared on app config page
                 </span>
+        </div>
     </div>
-</div>
-<div class="control-group">
-	<label class="control-label" for="slack_webhook_alert_channel_name">Destination channel  </label>
-    <div class="controls">
-	<input type="text" name="action.slack_webhook_alert.param.channel_name" id="slack_webhook_alert_channel_name"/>
+    <div class="control-group">
+        <label class="control-label" for="slack_webhook_alert_channel_name">Destination channel </label>
+        <div class="controls">
+            <input type="text" name="action.slack_webhook_alert.param.channel_name"
+                   id="slack_webhook_alert_channel_name"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-	<label class="control-label" for="slack_webhook_alert_username">Bot username  </label>
-    <div class="controls">
-	<input type="text" name="action.slack_webhook_alert.param.username" id="slack_webhook_alert_username"/>
+    <div class="control-group">
+        <label class="control-label" for="slack_webhook_alert_username">Bot username </label>
+        <div class="controls">
+            <input type="text" name="action.slack_webhook_alert.param.username" id="slack_webhook_alert_username"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-	<label class="control-label" for="slack_webhook_alert_emoji_avatar">Emoji avatar  </label>
-    <div class="controls">
-	<input type="text" name="action.slack_webhook_alert.param.emoji_avatar" id="slack_webhook_alert_emoji_avatar"/>
+    <div class="control-group">
+        <label class="control-label" for="slack_webhook_alert_emoji_avatar">Emoji avatar </label>
+        <div class="controls">
+            <input type="text" name="action.slack_webhook_alert.param.emoji_avatar"
+                   id="slack_webhook_alert_emoji_avatar"/>
+        </div>
     </div>
-</div>
-<div class="control-group">
-	<label class="control-label" for="slack_webhook_alert_message">Message <span class="required">*</span> </label>
-    <div class="controls">
-	<textarea name="action.slack_webhook_alert.param.message" id="slack_webhook_alert_message"/>
-                <span class="help-block"> 
+    <div class="control-group">
+        <label class="control-label" for="slack_webhook_alert_message">Message <span class="required">*</span> </label>
+        <div class="controls">
+            <textarea name="action.slack_webhook_alert.param.message" id="slack_webhook_alert_message"></textarea>
+            <span class="help-block">
                     Accepts Slack formatting, Splunk tokens, newlines.
-                </span>
+            </span>
+        </div>
     </div>
-</div>
 </form>
