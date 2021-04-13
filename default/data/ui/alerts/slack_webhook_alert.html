@@ -1,42 +1,32 @@
-<form class="form-horizontal form-complex">
-    <div class="control-group">
-        <label class="control-label" for="slack_webhook_alert_slack_webhook_name">Slack Webhook Name <span
-                class="required">*</span> </label>
-        <div class="controls">
-            <input type="text" name="action.slack_webhook_alert.param.slack_webhook_name"
-                   id="slack_webhook_alert_slack_webhook_name"/>
-            <span class="help-block">
-                    "Webhook Name" field as declared on app config page
-                </span>
+<form>
+    <splunk-control-group label="Slack Webhook">
+        <splunk-search-dropdown name="action.slack_webhook_alert.param.slack_webhook_name"
+                                search="| rest servicesNS/nobody/TA-slack-webhook-alert/storage/passwords | fields username"
+                                value-field="username" label-field="username">
+
+        </splunk-search-dropdown>
+    </splunk-control-group>
+    <splunk-control-group label="Slack Channel">
+        <splunk-text-input name="action.slack_webhook_alert.param.channel_name"></splunk-text-input>
+    </splunk-control-group>
+    <splunk-control-group label="Bot Username (optional)" help="If left blank, uses the name of your Slack app">
+        <splunk-text-input name="action.slack_webhook_alert.param.username"></splunk-text-input>
+    </splunk-control-group>
+    <splunk-control-group label="Emoji Avatar (optional)" help="If left blank, uses the icon of your Slack app">
+        <splunk-text-input name="action.slack_webhook_alert.param.emoji_avatar"></splunk-text-input>
+    </splunk-control-group>
+    <splunk-control-group label="Message" help="Accepts Slack formatting and Splunk email tokens">
+        <splunk-text-area name="action.slack_webhook_alert.param.message" hint="test"></splunk-text-area>
+    </splunk-control-group>
+    <splunk-control-group label="Help">
+        <div>
+            <a href="https://api.slack.com/reference/surfaces/formatting" target="_blank">Slack formatting
+                reference</a>
         </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_webhook_alert_channel_name">Destination channel </label>
-        <div class="controls">
-            <input type="text" name="action.slack_webhook_alert.param.channel_name"
-                   id="slack_webhook_alert_channel_name"/>
+        <div>
+            <a href="https://docs.splunk.com/Documentation/Splunk/8.1.3/Alert/EmailNotificationTokens" target="_blank">
+                Splunk tokens reference
+            </a>
         </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_webhook_alert_username">Bot username </label>
-        <div class="controls">
-            <input type="text" name="action.slack_webhook_alert.param.username" id="slack_webhook_alert_username"/>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_webhook_alert_emoji_avatar">Emoji avatar </label>
-        <div class="controls">
-            <input type="text" name="action.slack_webhook_alert.param.emoji_avatar"
-                   id="slack_webhook_alert_emoji_avatar"/>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_webhook_alert_message">Message <span class="required">*</span> </label>
-        <div class="controls">
-            <textarea name="action.slack_webhook_alert.param.message" id="slack_webhook_alert_message"></textarea>
-            <span class="help-block">
-                    Accepts Slack formatting, Splunk tokens, newlines.
-            </span>
-        </div>
-    </div>
+    </splunk-control-group>
 </form>
