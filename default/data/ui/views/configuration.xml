@@ -8,6 +8,9 @@
                 <h1>Slack Webhooks
                     <button id="add-webhook-button">+ Add a Webhook</button>
                 </h1>
+                <div>
+                    Webhook configurations are stored securely in the Splunk encrypted credential store.
+                </div>
                 <div id="webhooks-table"/>
             </html>
         </panel>

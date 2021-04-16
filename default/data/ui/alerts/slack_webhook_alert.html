@@ -6,7 +6,7 @@
 
         </splunk-search-dropdown>
     </splunk-control-group>
-    <splunk-control-group label="Slack Channel">
+    <splunk-control-group label="Slack Channel (optional)" help="If left blank, uses the channel in which the webhook was created.">
         <splunk-text-input name="action.slack_webhook_alert.param.channel_name"></splunk-text-input>
     </splunk-control-group>
     <splunk-control-group label="Bot Username (optional)" help="If left blank, uses the name of your Slack app">
@@ -27,6 +27,12 @@
             <a href="https://docs.splunk.com/Documentation/Splunk/8.1.3/Alert/EmailNotificationTokens" target="_blank">
                 Splunk tokens reference
             </a>
+        </div>
+    </splunk-control-group>
+    <splunk-control-group label="Note">
+        <div>
+            The owner of this alert must have the "list_storage_passwords" capability, as webhooks are stored in the
+            Splunk encrypted credential store.
         </div>
     </splunk-control-group>
 </form>
